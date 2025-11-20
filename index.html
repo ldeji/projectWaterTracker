@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="auth" class="container">
+    <h2>Login</h2>
+    <input id="loginId" placeholder="User ID" />
+    <input id="loginPass" type="password" placeholder="Password" />
+    <button id="loginBtn" type="button">Login</button>
+    <p style="margin:12px 0 0 0">Don't have an account? <a href="#" id="showRegLink">Register</a></p>
+
+    <!-- Forgot Login Details Section (Moved inside Auth container) -->
+    <div class="forgot-details">
+      <button type="button" id="forgotBtn">Forgot login details?</button>
+      <div id="recoverBox" class="hidden">
+        <input type="text" id="recoverName" placeholder="Enter your full name">
+        <button type="button" id="recoverSubmit">Recover Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER PAGE -->
+  <div id="register" class="container hidden">
+    <h2>Create Account</h2>
+    <input id="regId" placeholder="User ID (unique)" />
+    <input id="regPass" type="password" placeholder="Password" />
+    <input id="regName" placeholder="Full Name" />
+    <input id="regSex" placeholder="Sex (M/F)" />
+    <input id="regLoc" placeholder="Location" />
+    <input id="regWater" placeholder="Water Intake (Litres)" />
+    <input id="regPic" type="file" accept="image/*" />
+    <button id="regBtn" type="button">Register</button>
+    <p style="margin:12px 0 0 0"><a href="#" id="backLoginLink">Back to Login</a></p>
+  </div>
+
+  <!-- DASHBOARD PAGE -->
+  <div id="dashboard" class="container hidden">
+    <h2>Your Profile</h2>
+    <div id="profile" class="profile-card"></div>
+    <div class="buttons-row">
+      <button class="small-btn" id="logoutBtn">Logout</button>
+      <button class="small-btn" id="viewAllBtn">View All Users</button>
+    </div>
+
+    <h3 style="margin-top:18px;">Water Intake Ranking (All Users)</h3>
+    <div id="chartContainer"><canvas id="rankChart"></canvas></div>
+  </div>
+
+  <!-- ALL USERS PAGE -->
+  <div id="allUsersPage" class="container hidden">
+    <h2>All Registered Users</h2>
+    <div id="allUsersList"></div>
+    <div id="chartContainer2" style="margin-top:12px;"><canvas id="allUsersChart"></canvas></div>
+    <div style="margin-top:12px;"><button id="backBtn" type="button">Back to My Dashboard</button></div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
