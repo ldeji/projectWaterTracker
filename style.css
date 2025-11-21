@@ -3,11 +3,16 @@
     padding: 0;
     box-sizing: border-box;
   }
-  body { font-family: Arial, sans-serif; background:#87b9f2; margin:0; padding:20px; }
+  body { font-family: Arial, sans-serif; background: url(./image/splash2.jpg) no-repeat center center/cover; 
+    padding:20px; }
     .container { width:100%; max-width:760px; margin:20px auto; background:#fff; padding:18px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
-    h2 { margin-top:0; color:#0a62a8; }
+    .hero { text-align:center; margin-bottom:20px; border: solid 1px #0a2032; background-color:#0a2032 ; border-radius: 5px;}
+    .hero > h1 { color:#00c8ff; margin-bottom:10px;}
+    .hero > p { color:#00c8ff; margin-bottom:6px; }
+
+    h2 { margin-top:0; color:#00c8ff; }
     input, button { width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; }
-    button { background: #168ae9; color:#fff; border:none; cursor:pointer; }
+    button { background: #00c8ff; color:#fff; border:none; cursor:pointer; }
     button:hover { background: #084f88; }
     .row { display:flex; gap:12px; }
     .col { flex:1; }
@@ -25,7 +30,7 @@
       width: auto;
       margin: 0 auto;
       display: block;
-      background: #168ae9; /* Grey color to distinguish from login */
+      background: #00c8ff; /* Grey color to distinguish from login */
     }
     .forgot-details button:hover { background: #084f88; }
     

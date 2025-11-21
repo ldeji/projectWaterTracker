@@ -180,51 +180,10 @@ function renderAllUsers(){
         <p style="margin:6px 0 0 0;">Sex: ${u.sex || '-'}</p>
         <p style="margin:6px 0 0 0;">Location: ${u.loc || '-'}</p>
         <p style="margin:6px 0 0 0;">Water: ${u.water} L</p>
-        <div class="buttons-row" style="margin-top:6px;">
-          <button class="small-btn" onclick="editUser(${i})">Edit</button>
-          <button class="small-btn" onclick="deleteUser(${i})">Delete</button>
-          <button class="small-btn" onclick="viewUser(${i})">View</button>
-        </div>
       </div>
     `;
     container.appendChild(div);
   });
-}
-
-function editUser(index){
-  const u = users[index];
-  const newName = prompt("Edit name", u.name) || u.name;
-  const newSex = prompt("Edit sex (M/F)", u.sex) || u.sex;
-  const newLoc = prompt("Edit location", u.loc) || u.loc;
-  const newWater = parseFloat(prompt("Edit water intake (L)", u.water)) || u.water;
-  users[index] = { ...u, name: newName, sex: newSex, loc: newLoc, water: newWater };
-  saveUsers();
-  renderAllUsers();
-  renderAllUsersChart();
-  if(currentUser && users[index].id === currentUser.id){ currentUser = users[index]; }
-  alert("User updated.");
-}
-
-function deleteUser(index){
-  if(!confirm("Delete this user?")) return;
-  const removed = users.splice(index, 1);
-  saveUsers();
-  renderAllUsers();
-  renderAllUsersChart();
-  if(currentUser && removed.length && removed[0].id === currentUser.id){ 
-    currentUser = null; 
-    currentUserIndex = -1; 
-    showLogin(); 
-    alert("You deleted the logged-in account and have been logged out."); 
-  } else {
-    alert("User deleted.");
-  }
-}
-
-function viewUser(index){
-  currentUser = users[index];
-  currentUserIndex = index;
-  loadDashboard();
 }
 
 // ===== Charts =====
