@@ -28,6 +28,7 @@ function showLogin(){
 
 function showRegister(){ 
   hideAllSections();
+  clearRegisterInputs();
   document.getElementById("register").classList.remove("hidden"); 
 }
 
@@ -199,6 +200,17 @@ function login(){
 function logoutUser(){
   currentUser = null;
   showLogin();
+}
+
+// Clear Registration Inputs
+function clearRegisterInputs() {
+  document.getElementById('regId').value = "";
+  document.getElementById('regPass').value = "";
+  document.getElementById('regName').value = "";
+  document.getElementById('regSex').value = "";
+  document.getElementById('regLoc').value = "";
+  document.getElementById('regWater').value = "";
+  document.getElementById('regPic').value = ""; // Clears the selected file
 }
 
 // ===== 7. User Dashboard Logic =====

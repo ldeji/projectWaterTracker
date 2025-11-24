@@ -39,12 +39,14 @@
 <!-- 2. REGISTER PAGE -->
 <div id="register" class="container hidden">
   <h2>Create Account</h2>
-  <input id="regId" placeholder="Create User ID" />
-  <input id="regPass" type="password" placeholder="Create Password" />
-  <input id="regName" placeholder="Full Name" />
-  <input id="regSex" placeholder="Sex (M/F)" />
-  <input id="regLoc" placeholder="Location" />
-  <input type="number" id="regWater" placeholder="Current Water Intake (L)" />
+  <input id="regId" placeholder="Create User ID" value="" autocomplete="off" />
+  <input id="regPass" type="password" placeholder="Create Password" value="" autocomplete="off" />
+  
+  <!-- Added margin-top to separate sections slightly -->
+  <input id="regName" placeholder="Full Name" value="" autocomplete="off" />
+  <input id="regSex" placeholder="Sex (M/F)" value="" autocomplete="off" />
+  <input id="regLoc" placeholder="Location" value="" autocomplete="off" />
+  <input type="number" id="regWater" placeholder="Current Water Intake (L)" value="" autocomplete="off" />
   
   <label style="display:block; margin-top:10px; font-weight:bold; font-size:0.9em;">Upload Profile Picture:</label>
 <input type="file" id="regPic" accept="image/*" style="margin-top:5px;">
