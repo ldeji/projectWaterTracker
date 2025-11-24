@@ -36,3 +36,133 @@
     
     #recoverBox { text-align: center; }
     #recoverBox input { width: 80%; margin: 8px auto; display: block; }
+
+
+    /* Admin Table Styles */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+.user-table th, .user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.user-table th {
+  background-color: #0a62a8;
+  color: white;
+}
+.action-btn {
+  padding: 4px 8px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+}
+.btn-edit { background-color: #ffc107; color: #000; }
+.btn-delete { background-color: #dc3545; color: white; }
+
+/* Utility Class to hide elements */
+.hidden {
+  display: none !important;
+}
+
+/* Optional: Style for the new Admin section to make it look distinct */
+.admin-section {
+  text-align: center;
+}
+
+
+  /* --- RESPONSIVE CONTAINER --- */
+  .container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px; /* Keeps it neat on desktop */
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+  }
+
+  /* --- RESPONSIVE INPUTS & BUTTONS --- */
+  input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box; /* Prevents padding from breaking layout */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  button { cursor: pointer; background: #007bff; color: white; border: none; font-weight: bold; }
+  button:hover { opacity: 0.9; }
+  
+  .hidden { display: none !important; }
+  .buttons-row { display: flex; gap: 10px; }
+  .small-btn { padding: 5px 10px; font-size: 0.85em; width: auto; }
+
+  /* --- FIX FOR REGPIC (FILE INPUT) --- */
+  input[type="file"] {
+    background: #f8f9fa;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  /* --- FIX FOR DISPLAYED IMAGES (AVATARS) --- */
+  /* This ensures the uploaded image never overflows */
+  .profile-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .profile-box img {
+    width: 80px;       /* Fixed width */
+    height: 80px;      /* Fixed height */
+    object-fit: cover; /* Crops image nicely to fit circle */
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    flex-shrink: 0;    /* Prevents squishing on small screens */
+  }
+
+  /* --- ADMIN TABLE RESPONSIVENESS --- */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+  
+  /* Admin Avatar in Table */
+  td img {
+    width: 35px; 
+    height: 35px; 
+    object-fit: cover; 
+    border-radius: 50%;
+    display: block;
+  }
+
+
+/* --- MOBILE ADJUSTMENTS (Small Screens) --- */
+  @media (max-width: 480px) {
+    /* Stack buttons on mobile */
+    .buttons-row { flex-direction: column; }
+    
+    /* Stack profile info */
+    .profile-box { flex-direction: column; text-align: center; }
+    
+    /* Make avatar slightly larger and centered on mobile */
+    .profile-box img { width: 100px; height: 100px; margin-bottom: 10px; }
+
+    /* Hide less important columns in Admin table on very small screens if needed */
+    th:nth-child(5), td:nth-child(5), /* Sex */
+    th:nth-child(6), td:nth-child(6)  /* Loc */
+    { display: none; }
+    
+    /* Make fonts smaller */
+    h2 { font-size: 1.5em; }
+    input, button { font-size: 1em; }
+  }

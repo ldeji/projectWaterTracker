@@ -8,65 +8,110 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<!-- LOGIN PAGE -->
-  <div id="auth" class="container">
-    <div class="hero">
-       <h1>Welcome to Water Wellness</h1>
-       <p>Challenge yourself with water intake. It helps you to monitor the amount of water you consume
-        and see how you rank among other users.
-       </p>
-       <p>Stay hydrated and healthy!</p>
-    </div>
-    <h2>Login</h2>
-    <input id="loginId" placeholder="User ID" />
-    <input id="loginPass" type="password" placeholder="Password" />
+<!-- 1. LOGIN PAGE -->
+<div id="auth" class="container">
+  <div class="hero">
+     <h1>Water Wellness</h1>
+     <p>Hydration Tracker & Management System</p>
+  </div>
+
+  <h2>User Login</h2>
+  <input id="loginId" placeholder="Enter User ID" />
+  <input id="loginPass" type="password" placeholder="Enter Password" />
+  
+  <div class="buttons-row">
     <button id="loginBtn" type="button">Login</button>
-    <p style="margin:12px 0 0 0">Don't have an account? <a href="#" id="showRegLink">Register</a></p>
+    <!-- BUTTON TO ACCESS ADMIN DASHBOARD -->
+    <button id="adminDirectBtn" type="button" style="background-color: #333;">Login as Admin</button>
+  </div>
+  
+  <p style="margin-top:15px">New here? <a href="#" id="showRegLink">Register</a></p>
 
-    <!-- Forgot Login Details Section (Moved inside Auth container) -->
-    <div class="forgot-details">
-      <button type="button" id="forgotBtn">Forgot login details?</button>
-      <div id="recoverBox" class="hidden">
-        <input type="text" id="recoverName" placeholder="Enter your full name">
-        <button type="button" id="recoverSubmit">Recover Account</button>
-      </div>
+  <div class="forgot-details">
+    <button type="button" id="forgotBtn">Forgot Password?</button>
+    <div id="recoverBox" class="hidden">
+      <input type="text" id="recoverName" placeholder="Enter your Full Name">
+      <button type="button" id="recoverSubmit">Recover Account</button>
     </div>
   </div>
+</div>
 
-  <!-- REGISTER PAGE -->
-  <div id="register" class="container hidden">
-    <h2>Create Account</h2>
-    <input id="regId" placeholder="User ID (unique)" />
-    <input id="regPass" type="password" placeholder="Password" />
-    <input id="regName" placeholder="Full Name" />
-    <input id="regSex" placeholder="Sex (M/F)" />
-    <input id="regLoc" placeholder="Location" />
-    <input id="regWater" placeholder="Water Intake (Litres)" />
-    <input id="regPic" type="file" accept="image/*" />
-    <button id="regBtn" type="button">Register</button>
-    <p style="margin:12px 0 0 0"><a href="#" id="backLoginLink">Back to Login</a></p>
+<!-- 2. REGISTER PAGE -->
+<div id="register" class="container hidden">
+  <h2>Create Account</h2>
+  <input id="regId" placeholder="Create User ID" />
+  <input id="regPass" type="password" placeholder="Create Password" />
+  <input id="regName" placeholder="Full Name" />
+  <input id="regSex" placeholder="Sex (M/F)" />
+  <input id="regLoc" placeholder="Location" />
+  <input type="number" id="regWater" placeholder="Current Water Intake (L)" />
+  
+  <label style="display:block; margin-top:10px; font-weight:bold; font-size:0.9em;">Upload Profile Picture:</label>
+<input type="file" id="regPic" accept="image/*" style="margin-top:5px;">
+  
+  <button id="regBtn">Register</button>
+  <p><a href="#" id="backLoginLink">Back to Login</a></p>
+</div>
+
+<!-- 3. USER DASHBOARD -->
+<div id="dashboard" class="container hidden">
+  <h2>My Dashboard</h2>
+  <div id="profile" class="profile-box"></div> 
+  <div class="chart-container">
+    <canvas id="rankChart"></canvas>
+  </div>
+  <div class="buttons-row">
+    <button id="viewAllBtn">View All Users Rank</button>
+    <button id="logoutBtn" style="background-color:#dc3545;">Logout</button>
+  </div>
+</div>
+
+<!-- 4. ALL USERS RANK PAGE -->
+<div id="allUsersPage" class="container hidden">
+  <h2>Global Rankings</h2>
+  <div class="chart-container">
+    <canvas id="allUsersChart"></canvas>
+  </div>
+  <div id="allUsersList" class="user-list"></div>
+  <button id="backBtn">Back to Dashboard</button>
+</div>
+
+<!-- 5. ADMIN DASHBOARD (The part you are fixing) -->
+<div id="adminDashboard" class="container hidden" style="max-width: 950px;">
+  <h2>Admin Management</h2>
+  
+  <!-- TOTAL USERS COUNTER -->
+  <div style="background: #eef; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccd;">
+    <h3 style="margin:0">Total Registered Users: <span id="totalUsersCount" style="color:#007bff; font-size: 1.2em;">0</span></h3>
   </div>
 
-  <!-- DASHBOARD PAGE -->
-  <div id="dashboard" class="container hidden">
-    <h2>Your Profile</h2>
-    <div id="profile" class="profile-card"></div>
-    <div class="buttons-row">
-      <button class="small-btn" id="logoutBtn">Logout</button>
-      <button class="small-btn" id="viewAllBtn">View All Users</button>
-    </div>
-
-    <h3 style="margin-top:18px;">Water Intake Ranking (All Users)</h3>
-    <div id="chartContainer"><canvas id="rankChart"></canvas></div>
+  <div class="chart-container">
+    <canvas id="adminChart"></canvas>
   </div>
 
-  <!-- ALL USERS PAGE -->
-  <div id="allUsersPage" class="container hidden">
-    <h2>All Registered Users</h2>
-    <div id="allUsersList"></div>
-    <div id="chartContainer2" style="margin-top:12px;"><canvas id="allUsersChart"></canvas></div>
-    <div style="margin-top:12px;"><button id="backBtn" type="button">Back to My Dashboard</button></div>
+  <!-- ADMIN TABLE WITH ID AND PASSWORD COLUMNS -->
+  <div style="overflow-x:auto;">
+    <table border="1" cellspacing="0" cellpadding="10" style="width:100%; text-align:left; margin-top:20px; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #333; color: white;">
+          <th>Pic</th>
+          <th>User ID</th> <!-- ID Column -->
+          <th>Password</th> <!-- Password Column -->
+          <th>Name</th>
+          <th>Sex</th>
+          <th>Loc</th>
+          <th>Water (L)</th>
+          <th>Manage</th> <!-- Buttons Column -->
+        </tr>
+      </thead>
+      <tbody id="adminUserTableBody">
+        <!-- JavaScript will inject rows here -->
+      </tbody>
+    </table>
   </div>
+
+  <button id="adminLogoutBtn" style="margin-top:30px; background-color:#dc3545;">Admin Logout</button>
+</div>
 
 <script src="app.js"></script>
 </body>
