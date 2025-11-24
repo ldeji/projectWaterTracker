@@ -118,7 +118,7 @@ function renderAdminView() {
   
   adminChart = new Chart(ctx, {
     type: "bar",
-    data: { labels: names, datasets: [{ label: "Water Intake (L)", data: waters, backgroundColor: "#28a745" }] },
+    data: { labels: names, datasets: [{ label: "Water Intake (L)", data: waters, backgroundColor: "#007bff" }] },
     options: { scales: { y: { beginAtZero: true } } }
   });
 }

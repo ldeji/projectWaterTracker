@@ -32,10 +32,27 @@
       display: block;
       background: #00c8ff; /* Grey color to distinguish from login */
     }
-    .forgot-details button:hover { background: #084f88; }
+    .forgot-details button:hover { background: #084f88;
+    transform: translateY(-2px); /* Moves button up slightly */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);  transition: all 0.3s ease; /* Makes the hover smooth, not instant */}
     
     #recoverBox { text-align: center; }
     #recoverBox input { width: 80%; margin: 8px auto; display: block; }
+
+    /* Base style for the link */
+  #showRegLink {
+    color: #00c8ff;          /* Nice standard blue */
+    text-decoration: none;   /* Removes the default underline */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+
+  /* The Hover Effect */
+  #showRegLink:hover {
+    color: #004a99;          /* Darker blue when hovered */
+    text-decoration: underline; /* Adds the line back when hovering */
+    cursor: pointer;
+  }
 
 
     /* Admin Table Styles */
@@ -98,8 +115,24 @@
     border: 1px solid #ddd;
   }
 
-  button { cursor: pointer; background: #007bff; color: white; border: none; font-weight: bold; }
-  button:hover { opacity: 0.9; }
+  #adminDirectBtn {
+  background-color: #00c8ff; /* Original Cyan Color */
+  color: white;
+  transition: all 0.3s ease; /* Makes the hover smooth, not instant */
+}
+
+/* 2. The Hover Effect */
+#adminDirectBtn:hover {
+  background-color: #084f88;
+  transform: translateY(-2px); /* Moves button up slightly */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a shadow below */
+  
+}
+
+            /* login button  */
+  button { cursor: pointer; background: #00c8ff; color: white; border: none; font-weight: bold; }
+  button:hover { opacity: 0.9;  transform: translateY(-2px); /* Moves button up slightly */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);  transition: all 0.3s ease; /* Makes the hover smooth, not instant */}
   
   .hidden { display: none !important; }
   .buttons-row { display: flex; gap: 10px; }
