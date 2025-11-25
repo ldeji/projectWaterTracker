@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-<!-- LOGIN PAGE -->
+<body><!-- 1. LOGIN PAGE -->
 <div id="auth" class="container">
   <div class="hero">
      <h1>Water Wellness</h1>
@@ -16,12 +15,11 @@
   </div>
 
   <h2>User Login</h2>
-  <input id="loginId" placeholder="Enter User ID" />
-  <input id="loginPass" type="password" placeholder="Enter Password" />
+  <input id="loginId" placeholder="Enter User ID" autocomplete="off"/>
+  <input id="loginPass" type="password" placeholder="Enter Password" autocomplete="off"/>
   
   <div class="buttons-row">
     <button id="loginBtn" type="button">Login</button>
-    <!-- BUTTON TO ACCESS ADMIN DASHBOARD -->
     <button id="adminDirectBtn" type="button">Login as Admin</button>
   </div>
   
@@ -29,85 +27,114 @@
 
   <div class="forgot-details">
     <button type="button" id="forgotBtn">Forgot Password?</button>
-    <div id="recoverBox" class="hidden">
+    <!-- Hidden Recover Box -->
+    <div id="recoverBox" class="hidden" style="margin-top:10px;">
       <input type="text" id="recoverName" placeholder="Enter your Full Name">
-      <button type="button" id="recoverSubmit">Recover Account</button>
+      <button type="button" id="recoverSubmit" class="small-btn">Recover Account</button>
     </div>
   </div>
 </div>
 
-<!-- REGISTER PAGE -->
+<!-- 2. REGISTER PAGE -->
 <div id="register" class="container hidden">
   <h2>Create Account</h2>
-  <input id="regId" placeholder="Create User ID" value="" autocomplete="off" />
-  <input id="regPass" type="password" placeholder="Create Password" value="" autocomplete="off" />
-  
-  <!-- Added margin-top to separate sections slightly -->
-  <input id="regName" placeholder="Full Name" value="" autocomplete="off" />
-  <input id="regSex" placeholder="Sex (M/F)" value="" autocomplete="off" />
-  <input id="regLoc" placeholder="Location" value="" autocomplete="off" />
-  <input type="number" id="regWater" placeholder="Current Water Intake (L)" value="" autocomplete="off" />
+  <input id="regId" placeholder="Create User ID" autocomplete="off" />
+  <input id="regPass" type="password" placeholder="Create Password" autocomplete="off" />
+  <input id="regName" placeholder="Full Name" autocomplete="off" />
+  <input id="regSex" placeholder="Sex (M/F)" autocomplete="off" />
+  <input id="regLoc" placeholder="Location" autocomplete="off" />
+  <input type="number" id="regWater" placeholder="Current Water Intake (L)" autocomplete="off" />
   
   <label style="display:block; margin-top:10px; font-weight:bold; font-size:0.9em;">Upload Profile Picture:</label>
-<input type="file" id="regPic" accept="image/*" style="margin-top:5px;">
+  <input type="file" id="regPic" accept="image/*" style="margin-top:5px;">
   
-  <button id="regBtn">Register</button>
-  <p><a href="#" id="backLoginLink">Back to Login</a></p>
+  <div class="buttons-row" style="margin-top:15px;">
+    <button id="regBtn">Register</button>
+    <button id="backLoginLink">Back to Login</button>
+  </div>
 </div>
 
-<!-- USER DASHBOARD -->
+<!-- 3. USER DASHBOARD (With Daily/Weekly Charts) -->
 <div id="dashboard" class="container hidden">
   <h2>My Dashboard</h2>
-  <div id="profile" class="profile-box"></div> 
+  
+  <!-- Profile Info (Injected by JS) -->
+  <div id="profile" class="profile-box"></div>
+
+  <!-- Quick Action -->
+  <div style="margin-bottom: 20px; text-align: center;">
+    <button onclick="logWaterAction()" style="background: #28a745; width: 100%; font-size: 1.1em; padding: 12px;">
+      + Drink Water
+    </button>
+  </div>
+
+  <!-- NEW: Ranking Section (Daily & Weekly) -->
+  <div class="ranking-section">
+    <div class="rank-card">
+      <h3>🏆 Daily Top 3</h3>
+      <ul id="dailyRankList" class="rank-list">
+        <!-- JS puts items here -->
+      </ul>
+    </div>
+    <div class="rank-card">
+      <h3>📅 Weekly Top 3</h3>
+      <ul id="weeklyRankList" class="rank-list">
+        <!-- JS puts items here -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Comparison Chart -->
   <div class="chart-container">
     <canvas id="rankChart"></canvas>
   </div>
+
   <div class="buttons-row">
-    <button id="viewAllBtn">View All Users Rank</button>
+    <button id="viewAllBtn" style="background-color: #17a2b8;">View All Users Rank</button>
     <button id="logoutBtn" style="background-color:#dc3545;">Logout</button>
   </div>
 </div>
 
-<!-- ALL USERS RANK PAGE -->
+<!-- 4. VIEW ALL USERS PAGE (Added this so the button works) -->
 <div id="allUsersPage" class="container hidden">
   <h2>Global Rankings</h2>
   <div class="chart-container">
     <canvas id="allUsersChart"></canvas>
   </div>
-  <div id="allUsersList" class="user-list"></div>
-  <button id="backBtn">Back to Dashboard</button>
+  <!-- List of all users -->
+  <div id="allUsersList" style="margin-top:20px;"></div>
+  
+  <button id="backBtn" style="margin-top:20px;">Back to Dashboard</button>
 </div>
 
-<!-- ADMIN DASHBOARD -->
+<!-- 5. ADMIN DASHBOARD -->
 <div id="adminDashboard" class="container hidden" style="max-width: 950px;">
   <h2>Admin Management</h2>
   
-  <!-- TOTAL USERS COUNTER -->
   <div style="background: #eef; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ccd;">
-    <h3 style="margin:0">Total Registered Users: <span id="totalUsersCount" style="color:#007bff; font-size: 1.2em;">0</span></h3>
+    <h3 style="margin:0">Total Registered Users: <span id="totalUsersCount" style="color:#007bff;">0</span></h3>
   </div>
 
   <div class="chart-container">
     <canvas id="adminChart"></canvas>
   </div>
 
-  <!-- ADMIN TABLE WITH ID AND PASSWORD COLUMNS -->
   <div style="overflow-x:auto;">
     <table border="1" cellspacing="0" cellpadding="10" style="width:100%; text-align:left; margin-top:20px; border-collapse: collapse;">
       <thead>
         <tr style="background-color: #333; color: white;">
           <th>Pic</th>
-          <th>User ID</th> <!-- ID Column -->
-          <th>Password</th> <!-- Password Column -->
+          <th>User ID</th>
+          <th>Password</th>
           <th>Name</th>
           <th>Sex</th>
           <th>Loc</th>
           <th>Water (L)</th>
-          <th>Manage</th> <!-- Buttons Column -->
+          <th>Manage</th>
         </tr>
       </thead>
       <tbody id="adminUserTableBody">
-        <!-- JavaScript will inject rows here -->
+        <!-- JS Injects Rows -->
       </tbody>
     </table>
   </div>

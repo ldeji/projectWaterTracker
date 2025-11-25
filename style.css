@@ -55,6 +55,44 @@
   }
 
 
+  /* Ranking Section Layout */
+.ranking-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px 0;
+}
+.rank-card {
+  flex: 1; /* Makes them equal width */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-width: 200px;
+}
+.rank-card h3 {
+   margin-top: 0;
+  font-size: 1.1em;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+  color: #333;
+}
+.rank-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rank-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.95em;
+  border-bottom: 1px solid #eee;
+}
+.rank-list li:first-child { font-weight: bold; color: #d6a400; } /* Gold */
+.rank-list li:nth-child(2) { font-weight: bold; color: #757575; } /* Silver */
+.rank-list li:nth-child(3) { font-weight: bold; color: #a46628; } /* Bronze */
+
     /* Admin Table Styles */
 .user-table {
   width: 100%;
@@ -198,4 +236,6 @@
     /* Make fonts smaller */
     h2 { font-size: 1.5em; }
     input, button { font-size: 1em; }
-  }
+
+    /* Ranction-section  */
+      .ranking-section { flex-direction: column; }}
